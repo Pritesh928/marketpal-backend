@@ -1,5 +1,9 @@
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk
+
 WORKDIR /app
 COPY . .
-RUN ./mvnw clean package -DskipTests
-CMD ["java","-jar","target/marketpal-backend-0.0.1-SNAPSHOT.jar"]
+
+RUN apt-get update && apt-get install -y maven
+RUN mvn clean package -DskipTests
+
+CMD ["java","-jar","target/marketpal-backend-0.0.1-SNAPSHOT.jar"]   
