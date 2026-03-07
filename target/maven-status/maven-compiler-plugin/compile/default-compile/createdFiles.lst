@@ -5,6 +5,7 @@ com\example\auth\repository\AdminRepository.class
 com\example\auth\dto\LoginRequest.class
 com\example\auth\repository\ProductRepository.class
 com\example\auth\dto\RegisterRequest.class
+com\example\auth\controller\OrderController.class
 com\example\auth\service\AuthService.class
 com\example\auth\controller\AuthController.class
 com\example\auth\entity\LoginRecord.class
