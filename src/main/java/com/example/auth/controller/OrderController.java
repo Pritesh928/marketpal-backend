@@ -8,7 +8,7 @@ import com.example.auth.repository.OrderRepository;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://marketpal-frontend-two.vercel.app")
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {

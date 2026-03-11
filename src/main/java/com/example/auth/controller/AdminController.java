@@ -16,7 +16,7 @@ import com.example.auth.entity.OrderEntity;
 import com.example.auth.entity.UserEntity;
 import com.example.auth.service.AdminService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://marketpal-frontend-two.vercel.app")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
