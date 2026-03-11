@@ -1,12 +1,17 @@
 package com.example.auth.controller;
 
-import com.razorpay.Order;
-import com.razorpay.RazorpayClient;
-import org.json.JSONObject;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.json.JSONObject;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.razorpay.Order;
+import com.razorpay.RazorpayClient;
 
 @RestController
 @RequestMapping("/api/payment")
