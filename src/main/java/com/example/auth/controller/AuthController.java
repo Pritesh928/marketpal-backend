@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://marketpal-frontend-two.vercel.app") // Allow React frontend
+@CrossOrigin(origins = "https://marketpal.vercel.app") // Allow React frontend
 public class AuthController {
 
     @Autowired

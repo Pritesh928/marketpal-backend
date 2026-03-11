@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin(origins = "https://marketpal-frontend-two.vercel.app") // ✅ Allow React frontend
+@CrossOrigin(origins = "https://marketpal.vercel.app") // ✅ Allow React frontend
 public class ProductController {
 
     private final ProductService service;
