@@ -14,7 +14,7 @@ import com.example.auth.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "https://marketpal.vercel.app") // Allow React frontend
+@CrossOrigin(origins = "https://marketpalstore.priteshsingh928.qzz.io/") // Allow React frontend
 public class AuthController {
 
     @Autowired

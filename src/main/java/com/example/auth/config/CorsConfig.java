@@ -16,7 +16,7 @@ public class CorsConfig {
 
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "https://marketpal.vercel.app"
+                                "https://marketpalstore.priteshsingh928.qzz.io/"
                         )
                         .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
                         .allowedHeaders("*")

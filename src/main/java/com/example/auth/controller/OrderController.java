@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.auth.entity.OrderEntity;
 import com.example.auth.repository.OrderRepository;
 
-@CrossOrigin(origins = "https://marketpal.vercel.app")
+@CrossOrigin(origins = "https://marketpalstore.priteshsingh928.qzz.io/")
 @RestController
 @RequestMapping("/api/orders")
 public class OrderController {

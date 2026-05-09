@@ -15,7 +15,7 @@ import com.razorpay.RazorpayClient;
 
 @RestController
 @RequestMapping("/api/payment")
-@CrossOrigin(origins = "https://marketpal.vercel.app") // Allow React dev server
+@CrossOrigin(origins = "https://marketpalstore.priteshsingh928.qzz.io/") // Allow React dev server
 public class PaymentController {
 
     @PostMapping("/create-order")

@@ -18,7 +18,7 @@ import com.example.auth.service.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin(origins = "https://marketpal.vercel.app    ") // ✅ Allow React frontend
+@CrossOrigin(origins = "https://marketpalstore.priteshsingh928.qzz.io/") // ✅ Allow React frontend
 public class ProductController {
 
     private final ProductService service;
