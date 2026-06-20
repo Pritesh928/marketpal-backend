@@ -1,11 +1,11 @@
-package com.example.auth;
+package com.nascorp.marketpal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AuthApplication {
+public class MarketpalApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AuthApplication.class, args);
+        SpringApplication.run(MarketpalApplication.class, args);
     }
 }
