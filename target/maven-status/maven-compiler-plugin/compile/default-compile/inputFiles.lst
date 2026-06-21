@@ -1,1 +1,9 @@
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\config\SecurityConfig.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\controller\AuthController.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\dto\AuthResponse.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\dto\LoginRequest.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\dto\RegisterRequest.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\entity\User.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\MarketpalApplication.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\repository\UserRepository.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\service\AuthService.java
