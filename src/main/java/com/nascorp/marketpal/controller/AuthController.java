@@ -6,11 +6,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nascorp.marketpal.dto.AuthResponse;
+import com.nascorp.marketpal.dto.LoginRequest;
 import com.nascorp.marketpal.dto.RegisterRequest;
 import com.nascorp.marketpal.service.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -25,4 +29,14 @@ public class AuthController {
         String message = authService.register(request);
         return ResponseEntity.ok(message);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) {
+    try {
+        AuthResponse response = authService.login(loginRequest);
+        return ResponseEntity.ok(response);
+    } catch (RuntimeException ex) {
+        return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+    }
+  }
 }
