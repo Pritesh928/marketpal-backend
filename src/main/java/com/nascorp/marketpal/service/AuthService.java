@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Service;
 
 
@@ -24,6 +23,7 @@ public class AuthService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final EmailVerificationService emailVerificationService;
 
     public String register(RegisterRequest registerRequest) {
         // checks whether the username is already present or not
@@ -36,7 +36,7 @@ public class AuthService {
             throw new RuntimeException("Email already registered");
         }
 
-        // build user - pass get hashed here to secure it 
+        // build user - pass get hashed here to secure it from security breach
         User user = User.builder()
                 .username(registerRequest.getUsername())
                 .email(registerRequest.getEmail())
@@ -45,10 +45,13 @@ public class AuthService {
                 .enabled(true)
                 .build();
 
-        // user build - save it to the db
         userRepository.save(user);
 
-        // *one remaining thing todo gen token store in cache(redis) and then send email
+        emailVerificationService.sendVerificationEmail(
+            registerRequest.getEmail(),
+            registerRequest.getUsername()
+        );
+
         return "Registered Successfully.Please check your email to verify your account";
     }
 
