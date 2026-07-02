@@ -1,7 +1,6 @@
 package com.nascorp.marketpal.config;
 
-import java.net.URI;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -9,8 +8,7 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.beans.factory.annotation.Value;
-
+import io.lettuce.core.RedisURI;
 
 @Configuration
 public class RedisConfig {
@@ -19,28 +17,32 @@ public class RedisConfig {
     private String redisUrl;
 
     @Bean
-    public RedisConnectionFactory redisConnectionFactory () throws Exception {
-        URI uri = new URI(redisUrl);
+    public RedisConnectionFactory redisConnectionFactory() {
 
-        RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
-        redisConfig.setHostName(uri.getHost());
-        redisConfig.setPort(uri.getPort());
+        RedisURI redisURI = RedisURI.create(redisUrl);
 
-        String userInfo = uri.getUserInfo();
-        if (userInfo != null && userInfo.contains(":")) {
-            redisConfig.setPassword(userInfo.split(":")[1]);
+        RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
+        config.setHostName(redisURI.getHost());
+        config.setPort(redisURI.getPort());
+
+        if (redisURI.getUsername() != null) {
+            config.setUsername(redisURI.getUsername());
+        }
+
+        if (redisURI.getPassword() != null && redisURI.getPassword().length > 0) {
+            config.setPassword(new String(redisURI.getPassword()));
         }
 
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
                 .useSsl()
+                .disablePeerVerification()
                 .build();
-        
-        return new LettuceConnectionFactory(redisConfig,clientConfig);
+
+        return new LettuceConnectionFactory(config, clientConfig);
     }
 
-    @Bean 
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        return new StringRedisTemplate(redisConnectionFactory);
+    @Bean
+    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory factory) {
+        return new StringRedisTemplate(factory);
     }
-    
 }
