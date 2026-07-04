@@ -64,7 +64,7 @@ public class ProductService {
                .collect(Collectors.toList());
     }
 
-    public ProductResponse getProducts(Long id) {
+    public ProductResponse getProductById(Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found"));
         return toResponse(product);

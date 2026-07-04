@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import com.nascorp.marketpal.service.ProductService;
 import com.nascorp.marketpal.dto.ProductResponse;
 import com.nascorp.marketpal.dto.ProductRequest;
-import com.nascorp.marketpal.repository.ProductRepository;
 
 import java.util.List;
 import java.util.Map;
