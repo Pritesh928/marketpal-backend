@@ -2,6 +2,7 @@ package com.nascorp.marketpal.service;
 
 import com.resend.Resend;
 import com.resend.services.emails.model.CreateEmailOptions;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

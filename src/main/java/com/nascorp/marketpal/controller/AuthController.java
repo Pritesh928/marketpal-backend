@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.nascorp.marketpal.dto.AuthResponse;
 import com.nascorp.marketpal.dto.LoginRequest;
 import com.nascorp.marketpal.dto.RegisterRequest;
@@ -12,13 +15,12 @@ import com.nascorp.marketpal.service.AuthService;
 import com.nascorp.marketpal.service.EmailVerificationService;
 import com.nascorp.marketpal.repository.UserRepository;
 import com.nascorp.marketpal.entity.User;
+
 import jakarta.validation.Valid;
+
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @RestController
 @RequestMapping("/auth")
