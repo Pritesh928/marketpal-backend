@@ -22,7 +22,7 @@ public class ProductController {
     
     private final ProductService productService;
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
@@ -41,7 +41,7 @@ public class ProductController {
         return ResponseEntity.ok(productService.searchProducts(keyword));
     }
 
-    @PostMapping
+    @PostMapping("/")
     public ResponseEntity<?> createProduct(@Valid @RequestBody ProductRequest productRequest) {
         try {
             return ResponseEntity.ok(productService.createProduct(productRequest));
