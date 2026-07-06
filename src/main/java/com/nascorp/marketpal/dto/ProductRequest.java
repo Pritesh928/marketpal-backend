@@ -22,6 +22,6 @@ public class ProductRequest {
     @NotBlank(message = "Category is Required")
     private String category;
 
-    //it comes seperately from cloudinary no need to define something.
+    //it comes seperately from cloudinary we no need to define something here.
     private String imageUrl;
 }
