@@ -1,3 +1,4 @@
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\config\CloudinaryConfig.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\config\RedisConfig.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\config\SecurityConfig.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\controller\AuthController.java
@@ -18,5 +19,6 @@ C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\m
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\security\JwtAuthFilter.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\security\JwtService.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\service\AuthService.java
+C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\service\CloudinaryService.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\service\EmailVerificationService.java
 C:\Users\hp\Desktop\Java\marketpal\marketpal-backend\src\main\java\com\nascorp\marketpal\service\ProductService.java
