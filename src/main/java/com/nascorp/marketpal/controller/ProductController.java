@@ -8,12 +8,16 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 import com.nascorp.marketpal.service.ProductService;
+import com.nascorp.marketpal.service.CloudinaryService;
 import com.nascorp.marketpal.dto.ProductResponse;
 import com.nascorp.marketpal.dto.ProductRequest;
 
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/products")
@@ -21,6 +25,7 @@ import java.util.Map;
 public class ProductController {
     
     private final ProductService productService;
+    private final CloudinaryService cloudinaryService;
 
     @GetMapping("/")
     public ResponseEntity<List<ProductResponse>> getAllProducts() {
@@ -73,5 +78,16 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> getMyProduct() {
         return ResponseEntity.ok(productService.getMyProducts());
     }
+
+    @PostMapping("/upload-image")
+    public ResponseEntity<?> uploadImage(@RequestParam("file") MultipartFile file) {
+        try {
+            String imageUrl = cloudinaryService.uploadImage(file);
+            return ResponseEntity.ok(Map.of("imageUrl", imageUrl));
+        } catch (RuntimeException ex) {
+            return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
+        }
+    }
+    
 
 }
