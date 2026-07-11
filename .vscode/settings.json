@@ -1,3 +1,4 @@
+// settings.json file for prevention of compilation exception 
 {
     "java.compile.nullAnalysis.mode": "disabled",
     "java.configuration.updateBuildConfiguration": "automatic"

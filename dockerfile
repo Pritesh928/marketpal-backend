@@ -1,3 +1,4 @@
+# docker file for deployment of the pre build image of the backend instead of a springboot application with uneven dependencies.
 FROM eclipse-temurin:21-jdk
 
 WORKDIR /app
