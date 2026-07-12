@@ -26,17 +26,14 @@ public class AuthService {
     private final EmailVerificationService emailVerificationService;
 
     public String register(RegisterRequest registerRequest) {
-        // checks whether the username is already present or not
         if(userRepository.existsByUsername(registerRequest.getUsername())) {
             throw new RuntimeException("Username already taken");
         }
 
-        // checks if the email is already registered or not
         if(userRepository.existsByEmail(registerRequest.getEmail())) { 
             throw new RuntimeException("Email already registered");
         }
 
-        // build user - pass get hashed here to secure it from security breach
         User user = User.builder()
                 .username(registerRequest.getUsername())
                 .email(registerRequest.getEmail())
@@ -47,10 +44,14 @@ public class AuthService {
 
         userRepository.save(user);
 
-        emailVerificationService.sendVerificationEmail(
+        try {
+            emailVerificationService.sendVerificationEmail(
             registerRequest.getEmail(),
             registerRequest.getUsername()
         );
+        } catch (Exception e) {
+            System.err.println("Email sending failed: " + e.getMessage());
+        }
 
         return "Registered Successfully.Please check your email to verify your account";
     }
