@@ -1,7 +1,7 @@
 # MarketPal Backend
-Get a short overview of codebase to understand what actually it does
+Get a short overview of codebase to understand what actually it does 
 
-# What This Backend Does
+# What This Backend Does??
 1.MarketPal backend is a REST API built with Spring Boot.
 
 2.It handles everything the React frontend needs — user registration with email verification, secure login using JWT tokens, product listing with permanent image storage on Cloudinary, and ownership-based protection so only the person who listed a product can edit or delete it.
