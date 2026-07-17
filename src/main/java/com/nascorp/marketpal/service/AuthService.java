@@ -23,56 +23,41 @@ public class AuthService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final EmailVerificationService emailVerificationService;
 
     public String register(RegisterRequest registerRequest) {
         if(userRepository.existsByUsername(registerRequest.getUsername())) {
             throw new RuntimeException("Username already taken");
         }
 
-        if(userRepository.existsByEmail(registerRequest.getEmail())) { 
+        if(userRepository.existsByEmail(registerRequest.getEmail())) {
             throw new RuntimeException("Email already registered");
         }
 
         User user = User.builder()
                 .username(registerRequest.getUsername())
                 .email(registerRequest.getEmail())
-                .password(passwordEncoder.encode(registerRequest.getPassword()))
-                .emailVerified(false)
+                .password(passwordEncoder.encode(registerRequest.getPassword())).emailVerified(true)
                 .enabled(true)
                 .build();
-
+            
         userRepository.save(user);
 
-        try {
-            emailVerificationService.sendVerificationEmail(
-            registerRequest.getEmail(),
-            registerRequest.getUsername()
-        );
-        } catch (Exception e) {
-            System.err.println("Email sending failed: " + e.getMessage());
-        }
-
-        return "Registered Successfully.Please check your email to verify your account";
+        return "Registered Successfully!!";
     }
 
     public AuthResponse login(LoginRequest loginRequest) {
-        authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(
-                loginRequest.getUsername(),
-                loginRequest.getPassword()
-            )
-        );
+    authenticationManager.authenticate(
+        new UsernamePasswordAuthenticationToken(
+            loginRequest.getUsername(),
+            loginRequest.getPassword()
+        )
+    );
 
-        User user = userRepository.findByUsername(loginRequest.getUsername())
-               .orElseThrow(() -> new RuntimeException("User not found"));
+    User user = userRepository.findByUsername(loginRequest.getUsername())
+           .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if(!user.isEmailVerified()) {
-            throw new RuntimeException("Please verify your email before logging in");
-        }
+    String token = jwtService.generateToken(user.getUsername());
 
-        String token = jwtService.generateToken(user.getUsername());
-
-        return new AuthResponse(token, user.getUsername(), "Login successfull");
-    }
+    return new AuthResponse(token, user.getUsername(), "Login successful");
+    }  
 }

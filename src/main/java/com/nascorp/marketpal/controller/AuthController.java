@@ -12,7 +12,6 @@ import com.nascorp.marketpal.dto.AuthResponse;
 import com.nascorp.marketpal.dto.LoginRequest;
 import com.nascorp.marketpal.dto.RegisterRequest;
 import com.nascorp.marketpal.service.AuthService;
-import com.nascorp.marketpal.service.EmailVerificationService;
 import com.nascorp.marketpal.repository.UserRepository;
 import com.nascorp.marketpal.entity.User;
 
@@ -29,7 +28,6 @@ public class AuthController {
     
     private final AuthService authService;
     private final UserRepository userRepository;
-    private final EmailVerificationService emailVerificationService;
 
     @PostMapping("/register")
     public ResponseEntity<String> register
@@ -48,20 +46,4 @@ public class AuthController {
     }
     }
 
-  @GetMapping("/verify-email")
-  public ResponseEntity<?> verifyEmail(@RequestParam String token) {
-    try {
-        String email = emailVerificationService.verifyToken(token);
-
-        User user = userRepository.findByEmail(email)
-               .orElseThrow(() -> new RuntimeException("User not found"));
-
-        user.setEmailVerified(true);
-        userRepository.save(user);
-
-        return ResponseEntity.ok(Map.of("message", "Email verified successfully you can now login."));
-    } catch (RuntimeException ex) {
-        return ResponseEntity.badRequest().body(Map.of("error", ex.getMessage()));
-    }
-  }
 }
